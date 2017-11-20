@@ -1,3 +1,4 @@
+# -------------- Security Group for Basion Host -------------
 resource "aws_security_group" "ssh" {
     name = "SSH"
     description = "Allows connection to public subnet via port 22. To be used with a Bastion Host"
@@ -21,9 +22,11 @@ resource "aws_security_group" "ssh" {
         "Name" , "ssh-sg"
     ))}"
 }
+# --------------------------------------------------------
 
 
 
+# -------------- Bastion Host  -------------------------
 resource "aws_key_pair" "bastion-access" {
     key_name = "saed-basion-key"
     public_key = "${file("resources/key.pub")}"
