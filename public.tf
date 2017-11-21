@@ -1,6 +1,6 @@
 # -------------- Security Group for Basion Host -------------
-resource "aws_security_group" "ssh" {
-    name = "SSH"
+resource "aws_security_group" "bastion-sg" {
+    name = "ssh-from-everywhere"
     description = "Allows connection to public subnet via port 22. To be used with a Bastion Host"
     vpc_id = "${aws_vpc.default.id}"
 
@@ -38,7 +38,7 @@ resource "aws_instance" "bastion" {
     ami           = "${var.bastion_host_ami}"
     instance_type = "t2.micro"
     subnet_id = "${aws_subnet.public-us-east-1a.id}"
-    vpc_security_group_ids = ["${aws_security_group.ssh.id}"]
+    vpc_security_group_ids = ["${aws_security_group.bastion-sg.id}"]
     key_name = "${aws_key_pair.bastion-access.key_name}"
 
     tags = "${merge(var.default_tags, map(
