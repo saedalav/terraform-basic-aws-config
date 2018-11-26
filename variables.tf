@@ -1,6 +1,3 @@
-variable "profile" {
-  description= "Profile used to login to AWS" 
-}
 
 variable "region" {
   description= "AWS Region" 
@@ -28,4 +25,12 @@ variable "default_tags" {
   default = {}
 }
 
+variable "bastion_key_name" {
+	type= "string" 
+	default = "bastion_key"
+}
 
+variable "private_key_name" {
+  type = "string" 
+  default = "private_key" 
+}

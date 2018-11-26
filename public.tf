@@ -28,7 +28,7 @@ resource "aws_security_group" "bastion-sg" {
 
 # -------------- Bastion Host  -------------------------
 resource "aws_key_pair" "bastion-access" {
-    key_name = "saed-basion-key"
+    key_name = "${var.bastion_key_name}"
     public_key = "${file("resources/key.pub")}"
 }
 

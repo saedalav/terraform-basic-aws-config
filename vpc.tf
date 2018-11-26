@@ -16,7 +16,7 @@ resource "aws_subnet" "public-us-east-1a" {
     vpc_id = "${aws_vpc.default.id}"
 
     cidr_block = "${var.public_subnet_cidr}"
-    availability_zone = "us-east-1a"
+    availability_zone = "${var.region}a"
     map_public_ip_on_launch = true
 
     tags = "${merge(var.default_tags, map(
@@ -29,7 +29,7 @@ resource "aws_subnet" "private-us-east-1a" {
     vpc_id = "${aws_vpc.default.id}"
 
     cidr_block = "${var.private_subnet_cidr}"
-    availability_zone = "us-east-1a"
+    availability_zone = "${var.region}b"
 
     tags = "${merge(var.default_tags, map(
         "Name" , "private-subnet-us-east-1a"

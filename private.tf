@@ -34,7 +34,7 @@ resource "aws_security_group" "private-ssh" {
 
 # --------------------------------------------------------
 resource "aws_key_pair" "private-key" {
-    key_name = "private-key"
+    key_name = "${var.private_key_name}"
     public_key = "${file("resources/private.pub")}"
 }
 # --------------------------------------------------------
